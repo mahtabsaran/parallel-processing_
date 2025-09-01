@@ -13,6 +13,25 @@ from fastapi.staticfiles import StaticFiles
 
 # فقط یک بار FastAPI app ایجاد کنید
 app = FastAPI(title="Parallel Processing API", version="1.0.0")
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
+# اضافه کردن این lines بعد از ایجاد app
+@app.get("/")
+async def read_root():
+    return FileResponse("index.html")
+
+@app.get("/style.css")
+async def read_css():
+    return FileResponse("style.css")
+
+@app.get("/script.js")
+async def read_js():
+    return FileResponse("script.js")
+
+# برای سرو کردن فایل‌های استاتیک
+app.mount("/static", StaticFiles(directory="."), name="static")
 
 # فقط یک بار middleware CORS اضافه کنید
 app.add_middleware(
