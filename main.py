@@ -17,7 +17,7 @@ app = FastAPI(title="Parallel Processing API", version="1.0.0")
 # فقط یک بار middleware CORS اضافه کنید
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*","https://parallel-processing.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
